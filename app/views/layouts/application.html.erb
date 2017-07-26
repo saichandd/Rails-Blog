@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photobooth</title>
+    <%= csrf_meta_tags %>
+    <script src="https://use.fontawesome.com/0cb4b0529d.js"></script>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Raleway:300,400' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+      <%= render "layouts/sidebar" %>
+
+      <div id="home_content">
+          <ul id="navbar">
+            <li><%= link_to "ALL POSTS", root_path %></li>
+            <% if user_signed_in? %>
+                <li><%= link_to "new post", new_post_path %></li>
+                <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                  <li><%= link_to 'Log In', new_user_session_path %></li>
+                  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <%end%>
+          </ul>
+
+          <% flash.each do |name, msg| %>
+            <%= content_tag(:div, msg, class: "flash #{name}") %>
+          <% end %>
+
+          <%= yield %>
+
+      </div>
+  </body>
+
+<script type="text/javascript">
+  afterLoad();
+</script>
+</html>

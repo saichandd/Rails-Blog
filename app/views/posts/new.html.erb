@@ -1,0 +1,8 @@
+
+
+<div class="new post">
+    <h1> New Post</h1>
+    <%= form_for :post, html: { multipart: true }, url: posts_path do |f| %>
+        <%= render partial: 'form', locals: { form: f }%>
+    <%end%>
+</div>

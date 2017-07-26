@@ -1,0 +1,12 @@
+
+<% @posts.each do |p| %>
+    <div class="all_posts">
+        <h2 class="title">
+            <%= link_to p.title, post_path(p)%>
+        </h2>
+        <p class="time">
+            posted : <%= p.created_at.strftime("%B, %d, %Y") %>
+        </p>
+        <p><%= image_tag p.image.url(:medium), class: "image" %></p>
+    </div>
+<% end %>

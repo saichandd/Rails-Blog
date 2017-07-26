@@ -1,0 +1,23 @@
+<div id="menubar">&#9776;</div>
+
+<div id="sidebar">
+    <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <br/>
+        <% if user_signed_in? %>
+            <li class="type">Your Activity</li>
+            <li>logged in as <%= current_user.email %></li>
+            <li><%= pluralize(current_user.posts.count, "image") %></li>
+            <li><%= pluralize(current_user.comments.count, "comment") %></li>
+        <%else %>
+            <li class="create_account">
+                <%= link_to 'Log In', new_user_session_path %>
+                 to post images, comment and much more! 
+                 <br/>
+                 No account? <%= link_to 'Sign up', new_user_registration_path %>
+            </li>
+        <%end%>
+
+    </ul>
+
+</div>

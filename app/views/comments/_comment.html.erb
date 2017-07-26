@@ -1,0 +1,15 @@
+
+<div class="comment">
+    <div class="comment_content">
+        <p class="body"><%= comment.body %></p>
+        <p class="time">
+            commented <%= time_ago_in_words(comment.created_at) %> ago, by <%= comment.user.email %>
+            <% if current_user == comment.user %>
+                |<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, [comment.post, comment],
+                    method: :delete,
+                     data: { confirm: 'Sure you wanna delete that comment?'} %>
+            <% end %>
+        </p>
+    </div>
+    <hr/>
+</div>

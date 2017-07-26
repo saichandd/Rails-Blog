@@ -1,0 +1,7 @@
+
+<div class="edit post">
+    <h1>Edit Post</h1>
+    <%= form_for @post, html: { multipart: true } do |f| %>
+    	<%= render partial: 'form', locals: { form: f }%>
+    <% end %>
+</div>
