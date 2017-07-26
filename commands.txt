@@ -1,0 +1,11 @@
+rails g controller posts
+rails g model Post title:string body:text uder_id:integer
+
+added devise to gemfile -> bundle install
+
+rails g devise:install
+rails g decise:views
+rails g devise User -> rake migrate
+
+in models -> add assocition between User and Post
+rails g paperclip post image
