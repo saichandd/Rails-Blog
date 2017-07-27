@@ -1,25 +1,28 @@
+<%= form_for :post, html: { multipart: true }, url: posts_path do |form| %>
 
-<% if @post.errors.any? %>
-    <div class="error">
-        <h2 class="error">
-            <%= pluralize(@post.errors.count, "error") %> prevented this post from saving
-        </h2>
-        <ul>
-            <% @post.errors.full_messages.each do |msg| %>
-            <li class="error"><%= msg %></li>
-            <%end%>
-        </ul>
-    </div>
+    <% if @post.errors.any? %>
+        <div class="error">
+            <h2 class="error">
+                <%= pluralize(@post.errors.count, "error") %> prevented this post from saving
+            </h2>
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                <li class="error"><%= msg %></li>
+                <%end%>
+            </ul>
+        </div>
+    <%end%>
+
+    <p>
+        <%= form.label :image%><br/>
+        <%= form.file_field :image%><br/>
+    </p>
+
+    <p>
+        <%= form.label :title%><br/>
+        <%= form.text_field :title%><br/>
+    </p>
+
+    <%= form.submit "SUMBIT" %>
+
 <%end%>
-
-<p>
-    <%= form.label :image%><br/>
-    <%= form.file_field :image%><br/>
-</p>
-
-<p>
-    <%= form.label :title%><br/>
-    <%= form.text_field :title%><br/>
-</p>
-
-<%= form.submit "SUMBIT" %>
